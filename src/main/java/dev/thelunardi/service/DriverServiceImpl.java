@@ -11,11 +11,12 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 @ApplicationScoped
 public class DriverServiceImpl implements DriverService {
-    private static final org.jboss.logging.Logger LOG = Logger.getLogger(DriverServiceImpl.class);
+    private static final Logger LOG = Logger.getLogger(DriverServiceImpl.class);
 
     @Inject
     DriverClientBuilder driverClientBuilder;
@@ -24,12 +25,16 @@ public class DriverServiceImpl implements DriverService {
     ConstantHelper constantHelper;
 
     @Override
-    public List<Driver> getDrivers() throws Exception {
+    public List<Driver> getDrivers() throws MalformedURLException {
         try {
             DriverClient driverClient = driverClientBuilder.build(constantHelper.getF1Url());
             return driverClient.getDrivers().getMRData().getDriverTable().getDrivers();
-        } catch (DriverException e) {
-            throw new Exception("Erro ao listar os pilotos");
+        } catch (MalformedURLException | DriverException e) {
+            LOG.errorf("Erro ao listar os pilotos", e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            LOG.errorf("Erro interno ao listar os pilotos", e.getMessage());
+            throw e;
         }
     }
 }
