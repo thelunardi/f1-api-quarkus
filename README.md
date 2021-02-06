@@ -1,4 +1,4 @@
-# spotify-api-quarkus project
+# f1-api-quarkus project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
