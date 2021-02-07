@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 import java.io.ByteArrayInputStream;
 
 @Priority(4000)
-public class DriverRequestMapper implements ResponseExceptionMapper<RuntimeException> {
+public class ApiRequestMapper implements ResponseExceptionMapper<RuntimeException> {
     @Override
     public RuntimeException toThrowable(Response response) {
         int status = response.getStatus();

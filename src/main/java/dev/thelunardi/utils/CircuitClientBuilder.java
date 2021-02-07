@@ -9,7 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 @ApplicationScoped
-public class DriverClientBuilder {
+public class CircuitClientBuilder {
     public ApiClient build(String url) throws MalformedURLException {
         return RestClientBuilder
                 .newBuilder()

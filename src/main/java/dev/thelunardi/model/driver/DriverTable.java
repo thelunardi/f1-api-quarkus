@@ -1,4 +1,4 @@
-package dev.thelunardi.model;
+package dev.thelunardi.model.driver;
 
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;

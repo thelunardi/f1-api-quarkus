@@ -1,4 +1,4 @@
-package dev.thelunardi.model;
+package dev.thelunardi.model.driver;
 
 public class Driver {
     public String driverId;

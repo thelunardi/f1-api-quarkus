@@ -1,15 +1,15 @@
-package dev.thelunardi.model;
+package dev.thelunardi.model.circuit;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DriverResponse {
+public class CircuitResponse {
     @JsonbProperty("MRData")
-    public MRData MRData;
+    public MRDataCircuit mrData;
 
-    public MRData getMRData() {
-        return MRData;
+    public MRDataCircuit getMRDataCircuit() {
+        return mrData;
     }
 }
