@@ -48,3 +48,13 @@ If you want to learn more about building native executables, please consult http
 <p>A Hello World RESTEasy resource</p>
 
 Guide: https://quarkus.io/guides/rest-json
+
+# Testing with a local dynamo
+
+`docker run -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -inMemory -sharedDb`
+
+`aws dynamodb create-table --table-name drivers --attribute-definitions AttributeName=driverId,AttributeType=S --key-schema AttributeName=driverId,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 --endpoint-url http://localhost:8000`
+
+`aws dynamodb scan --table drivers --endpoint-url http://localhost:8000`
+
+`aws dynamodb put-item --table-name drivers --item '{"driverId": {"S": "1"}, "url": {"S": "teste"}, "givenName": {"S": "teste"}, "familyName": {"S": "teste"}, "dateOfBirth": {"S": "2020-01-01"}, "nationality": {"S": "BR"}}' --endpoint-url http://localhost:8000`

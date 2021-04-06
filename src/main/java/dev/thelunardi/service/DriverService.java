@@ -8,4 +8,5 @@ import java.util.List;
 @ApplicationScoped
 public interface DriverService {
     List<Driver> getDrivers() throws Exception;
+    Driver getInternalDriverById(String driverId) throws Exception;
 }
